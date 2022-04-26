@@ -1,0 +1,49 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: String!
+  name: String!
+  email: String!
+  password: String!
+  phone: String
+  role: Role!
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+type Board {
+  id: String!
+  title: String!
+  content: String!
+  user: User!
+}
+
+type Query {
+  board(id: String!): Board!
+  fetchUser: User!
+}
+
+type Mutation {
+  createBoard(userId: String!, createBoardInput: CreateBoardInput!): Board!
+  createUser(createUserInput: CreateUserInput!): User!
+  login(email: String!, password: String!): String!
+  restoreAccessToken: String!
+}
+
+input CreateBoardInput {
+  title: String
+  content: String
+}
+
+input CreateUserInput {
+  name: String
+  email: String
+  password: String
+  phone: String
+  role: Role
+}
